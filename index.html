@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MINE — Lunar Miner</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Force join overlay -->
+  <div id="forceJoin" class="overlay hidden">
+    <div class="overlay-card">
+      <div class="overlay-emoji">📣</div>
+      <h2>Join to start mining</h2>
+      <p>Join our channel first, then come back and tap "I joined".</p>
+      <a id="joinBtn" class="btn btn-yellow" href="#" target="_blank">Join Channel</a>
+      <button id="joinedCheckBtn" class="btn btn-ghost">✅ I joined</button>
+    </div>
+  </div>
+
+  <!-- MINE view -->
+  <section id="view-mine" class="view active">
+    <div class="top-card">
+      <div class="balance-row">
+        <div>
+          <div class="label">🪙 Current collection</div>
+          <div class="balance"><span id="balance">0.0000</span> <span class="sym" id="sym1">MINE</span></div>
+          <div class="sub">Hashrate <b id="hashrate">1.00 TH/s</b></div>
+        </div>
+        <div class="timer-box">
+          <div class="timer" id="timerText">24h 00m</div>
+          <div class="timer-sub">until cap</div>
+        </div>
+      </div>
+      <div class="progress"><div id="timerBar" class="progress-fill"></div></div>
+      <button id="collectBtn" class="btn btn-yellow btn-big">⛏️ Collect earnings</button>
+      <button id="startBtn" class="btn btn-ghost btn-big hidden">▶️ Start Mining</button>
+      <div class="mining-status" id="miningStatus">⛏️ Mining is ON — tokens are accruing</div>
+    </div>
+
+    <div class="level-card">
+      <div class="level-head">
+        <span>🗺️ Mining path</span>
+        <span class="level-badge">Level <b id="levelNum">1</b> · <span id="levelName">Apprentice</span></span>
+      </div>
+      <div id="levelPath" class="level-path"></div>
+      <div class="progress"><div id="levelBar" class="progress-fill green"></div></div>
+      <div class="sub center">Total earned: <b id="totalEarned">0</b> <span class="sym">MINE</span></div>
+    </div>
+  </section>
+
+  <!-- TASKS view -->
+  <section id="view-tasks" class="view">
+    <h2 class="view-title">📋 Tasks</h2>
+    <p class="sub">Complete tasks to earn free tokens.</p>
+    <div id="taskList" class="list"></div>
+  </section>
+
+  <!-- MINERS view -->
+  <section id="view-miners" class="view">
+    <h2 class="view-title">⛏️ Miners</h2>
+    <p class="sub">Buy miners with tokens to raise your hashrate.</p>
+    <div class="sub">Your balance: <b id="minerBalance">0</b> <span class="sym">MINE</span></div>
+    <div id="minerList" class="list"></div>
+  </section>
+
+  <!-- WALLET view -->
+  <section id="view-wallet" class="view">
+    <h2 class="view-title">👛 Wallet</h2>
+    <div class="wallet-card">
+      <div class="label">Balance</div>
+      <div class="balance big"><span id="walletBalance">0.0000</span> <span class="sym">MINE</span></div>
+      <div class="sub">Total earned: <b id="walletTotal">0</b> MINE</div>
+      <div class="sub">Hashrate: <b id="walletHash">1.00 TH/s</b></div>
+      <div class="sub">Free plan: <b id="walletDaily">10</b> MINE / day</div>
+    </div>
+    <p class="sub center">⚠️ In-app points only — no real crypto, no real money, no withdraw.</p>
+  </section>
+
+  <!-- PROFILE view -->
+  <section id="view-profile" class="view">
+    <h2 class="view-title">👤 Profile</h2>
+    <div class="wallet-card">
+      <div class="profile-row"><span>Name</span><b id="pName">—</b></div>
+      <div class="profile-row"><span>Username</span><b id="pUser">—</b></div>
+      <div class="profile-row"><span>User ID</span><b id="pId">—</b></div>
+      <div class="profile-row"><span>Level</span><b id="pLevel">1</b></div>
+      <div class="profile-row"><span>Mining</span><b id="pMining">OFF</b></div>
+    </div>
+  </section>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button data-view="tasks">📋<span>Tasks</span></button>
+    <button data-view="miners">🪖<span>Miners</span></button>
+    <button data-view="mine" class="active">⛏️<span>Mine</span></button>
+    <button data-view="wallet">👛<span>Wallet</span></button>
+    <button data-view="profile">👤<span>Profile</span></button>
+  </nav>
+
+  <div id="toast" class="toast hidden"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
